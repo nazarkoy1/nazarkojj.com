@@ -131,28 +131,35 @@
 
     // ======= Project Data (edit me) =======
     const PROJECTS = [
-      {
-        title: 'Stabilized Platform for High‑Altitude Balloon',
-        summary: 'MPU6050 + Arduino Nano controller to keep a payload level in flight.',
-        tags: ['Arduino','C++','Control Systems'],
-        links: { demo: '#', code: '#'},
-        details: 'Designed an active stabilization platform using IMU fusion (complementary filter), PID control, and micro‑servo actuation. Logged motion data and tuned gains to minimize overshoot under disturbance.'
-      },
-      {
-        title: 'Automatic Sun‑Tracking Blinds',
-        summary: 'Low‑power mechanism that tracks the sun to optimize indoor lighting.',
-        tags: ['Embedded','Mechanisms','3D CAD'],
-        links: { demo: '#', code: '#'},
-        details: 'Built a dual LDR sensor head to estimate incident angle and drive a micro‑servo via a simple differential amplifier. Modeled torque and gear ratios; included manual override and failsafe.'
-      },
-      {
-        title: 'Desktop Organizer with Lift Mechanism',
-        summary: 'Mechanical lift platform with switchable manual/automatic modes.',
-        tags: ['Mechanisms','Fabrication'],
-        links: { demo: '#', code: '#'},
-        details: 'Laser‑cut chassis with rack‑and‑pinion lift; microcontroller option for schedule‑based motion. Focus on strength‑to‑weight and safety interlocks.'
-      }
-    ];
+  {
+    title: 'Truss Bridge Structural Analysis & Build',
+    summary: 'Design, analysis, and construction of a balsa wood truss bridge for maximum efficiency (strength-to-weight).',
+    tags: ['Engineering Statics', 'Structural Analysis', '3D CAD', 'Fabrication'],
+    links: { demo: '#', code: '#'},
+    details: 'Applied the **Method of Joints** and **Method of Sections** to determine internal forces in truss members under a concentrated load. Designed a **Pratt** or **Warren** truss geometry using 3D CAD to minimize member stress. Constructed the bridge from balsa wood and tested it to failure to calculate the final efficiency ratio.'
+  },
+  {
+    title: 'Stabilized Platform for High‑Altitude Balloon',
+    summary: 'MPU6050 + Arduino Nano controller to keep a payload level in flight.',
+    tags: ['Embedded', 'Control Systems', 'C++'],
+    links: { demo: '#', code: '#'},
+    details: 'Designed an active stabilization platform using IMU fusion (complementary filter), PID control, and micro‑servo actuation. Logged motion data and tuned gains to minimize overshoot under disturbance.'
+  },
+  {
+    title: 'Automatic Sun‑Tracking Blinds',
+    summary: 'Low‑power mechanism that tracks the sun to optimize indoor lighting.',
+    tags: ['Embedded', 'Mechanisms', '3D CAD', 'Sensor Fusion'],
+    links: { demo: '#', code: '#'},
+    details: 'Built a dual LDR sensor head to estimate incident angle and drive a micro‑servo via a simple differential amplifier. Modeled torque and gear ratios; included manual override and failsafe.'
+  },
+  {
+    title: 'Desktop Organizer with Lift Mechanism',
+    summary: 'Mechanical lift platform with switchable manual/automatic modes.',
+    tags: ['Mechanisms', 'Fabrication', 'CAD'],
+    links: { demo: '#', code: '#'},
+    details: 'Laser‑cut chassis with rack‑and‑pinion lift; microcontroller option for schedule‑based motion. Focus on strength‑to‑weight and safety interlocks.'
+  }
+];
 
     // ======= Render Projects =======
     function renderProjects(){
