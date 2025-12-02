@@ -136,7 +136,9 @@
     summary: 'Design, analysis, and construction of a balsa wood truss bridge for maximum efficiency (strength-to-weight).',
     tags: ['Engineering Statics', 'Structural Analysis', '3D CAD', 'Fabrication'],
     links: { demo: '#', code: '#'},
-    details: 'Applied the **Method of Joints** and **Method of Sections** to determine internal forces in truss members under a concentrated load. Designed a **Pratt** or **Warren** truss geometry using 3D CAD to minimize member stress. Constructed the bridge from balsa wood and tested it to failure to calculate the final efficiency ratio.'
+    details: 'Applied the **Method of Joints** and **Method of Sections** to determine internal forces in truss members under a concentrated load. Designed a **Pratt** or **Warren** truss geometry using 3D CAD to minimize member stress. Constructed the bridge from balsa wood and tested it to failure to calculate the final efficiency ratio.',
+    // 💡 FIX: Added imageURL to use the image in your assets folder
+    imageURL: 'assets/1.jpg' 
   },
   {
     title: 'Stabilized Platform for High‑Altitude Balloon',
@@ -162,40 +164,40 @@
 ];
 
     // ======= Render Projects =======
-function renderProjects(){
-  const grid = document.getElementById('projects-grid');
-  grid.innerHTML = '';
-  PROJECTS.forEach((p, i) => {
-    // Determine the content for the thumbnail
-    let thumbContent = p.imageURL 
-      ? `<img src="${p.imageURL}" alt="${p.title} image" style="width:100%;height:100%;object-fit:cover;"/>`
-      : placeholderSVG(); // Fallback to your existing SVG placeholder
+    function renderProjects(){
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = '';
+      PROJECTS.forEach((p, i) => {
+        // 💡 FIX: This logic is now correct, checking for imageURL to render the image
+        let thumbContent = p.imageURL 
+          ? `<img src="${p.imageURL}" alt="${p.title} image" style="width:100%;height:100%;object-fit:cover;"/>`
+          : placeholderSVG(); // Fallback to your existing SVG placeholder
 
-    const card = document.createElement('article');
-    card.className = 'project card';
-    card.innerHTML = `
-      <div class="thumb">
-        ${thumbContent}
-      </div>
-      <div class="body">
-        <h3>${p.title}</h3>
-        <p class="muted">${p.summary}</p>
-        <div class="meta">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
-      </div>
-      <div class="actions">
-        <a class="btn" href="${p.links.demo}" target="_blank" rel="noreferrer noopener">Live</a>
-        <a class="btn" href="${p.links.code}" target="_blank" rel="noreferrer noopener">Code</a>
-        <button class="btn primary" data-idx="${i}" aria-haspopup="dialog">Details</button>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+        const card = document.createElement('article');
+        card.className = 'project card';
+        card.innerHTML = `
+          <div class="thumb">
+            ${thumbContent}
+          </div>
+          <div class="body">
+            <h3>${p.title}</h3>
+            <p class="muted">${p.summary}</p>
+            <div class="meta">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="${p.links.demo}" target="_blank" rel="noreferrer noopener">Live</a>
+            <a class="btn" href="${p.links.code}" target="_blank" rel="noreferrer noopener">Code</a>
+            <button class="btn primary" data-idx="${i}" aria-haspopup="dialog">Details</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
 
-  // Attach open handlers
-  grid.querySelectorAll('button[aria-haspopup="dialog"]').forEach(btn => {
-    btn.addEventListener('click', (e) => openModal(PROJECTS[+e.currentTarget.dataset.idx]));
-  })
-}
+      // Attach open handlers
+      grid.querySelectorAll('button[aria-haspopup="dialog"]').forEach(btn => {
+        btn.addEventListener('click', (e) => openModal(PROJECTS[+e.currentTarget.dataset.idx]));
+      })
+    }
 
     function placeholderSVG(){
       return `<svg viewBox='0 0 800 450' xmlns='http://www.w3.org/2000/svg'>
@@ -282,7 +284,6 @@ function renderProjects(){
         </div>
       </div>
       <div class="hero-card card" aria-hidden="true">
-        <!-- Decorative hero art -->
         <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
           <defs>
             <linearGradient id="gr1" x1="0" y1="0" x2="1" y2="1">
@@ -362,7 +363,6 @@ function renderProjects(){
     </div>
   </footer>
 
-  <!-- Modal -->
   <dialog class="modal" id="modal" aria-labelledby="modal-title">
     <div class="modal-card card" role="document">
       <div class="modal-header">
