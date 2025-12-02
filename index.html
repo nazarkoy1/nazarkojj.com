@@ -162,35 +162,40 @@
 ];
 
     // ======= Render Projects =======
-    function renderProjects(){
-      const grid = document.getElementById('projects-grid');
-      grid.innerHTML = '';
-      PROJECTS.forEach((p, i) => {
-        const card = document.createElement('article');
-        card.className = 'project card';
-        card.innerHTML = `
-          <div class="thumb">
-            ${placeholderSVG()}
-          </div>
-          <div class="body">
-            <h3>${p.title}</h3>
-            <p class="muted">${p.summary}</p>
-            <div class="meta">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
-          </div>
-          <div class="actions">
-            <a class="btn" href="${p.links.demo}" target="_blank" rel="noreferrer noopener">Live</a>
-            <a class="btn" href="${p.links.code}" target="_blank" rel="noreferrer noopener">Code</a>
-            <button class="btn primary" data-idx="${i}" aria-haspopup="dialog">Details</button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
+function renderProjects(){
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = '';
+  PROJECTS.forEach((p, i) => {
+    // Determine the content for the thumbnail
+    let thumbContent = p.imageURL 
+      ? `<img src="${p.imageURL}" alt="${p.title} image" style="width:100%;height:100%;object-fit:cover;"/>`
+      : placeholderSVG(); // Fallback to your existing SVG placeholder
 
-      // Attach open handlers
-      grid.querySelectorAll('button[aria-haspopup="dialog"]').forEach(btn => {
-        btn.addEventListener('click', (e) => openModal(PROJECTS[+e.currentTarget.dataset.idx]));
-      })
-    }
+    const card = document.createElement('article');
+    card.className = 'project card';
+    card.innerHTML = `
+      <div class="thumb">
+        ${thumbContent}
+      </div>
+      <div class="body">
+        <h3>${p.title}</h3>
+        <p class="muted">${p.summary}</p>
+        <div class="meta">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="${p.links.demo}" target="_blank" rel="noreferrer noopener">Live</a>
+        <a class="btn" href="${p.links.code}" target="_blank" rel="noreferrer noopener">Code</a>
+        <button class="btn primary" data-idx="${i}" aria-haspopup="dialog">Details</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Attach open handlers
+  grid.querySelectorAll('button[aria-haspopup="dialog"]').forEach(btn => {
+    btn.addEventListener('click', (e) => openModal(PROJECTS[+e.currentTarget.dataset.idx]));
+  })
+}
 
     function placeholderSVG(){
       return `<svg viewBox='0 0 800 450' xmlns='http://www.w3.org/2000/svg'>
