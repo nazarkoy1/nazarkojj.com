@@ -6,17 +6,42 @@
   <title>Julia Nazarko — Engineer Portfolio</title>
   <meta name="description" content="Portfolio website showcasing engineering projects, experience, and skills." />
   <meta name="color-scheme" content="light dark" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='M128 16a16 16 0 0 1 16 16v48h48a16 16 0 1 1 0 32h-48v48a16 16 0 1 1-32 0v-48H64a16 16 0 1 1 0-32h48V32a16 16 0 0 1 16-16Z'/%3E%3C/svg%3E"/>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='M128 16a16 16 0 0 1 16 16v48h48a16 16 0 1 1 0 32h-48v48a16 16 0 1 1-32 0v-48H64a16 16 0 1 1 0-32h48V32a16 16 0 0 1 16-16Z'/%3E%3C/svg%3E"
+  />
   <style>
     /* ========= CSS RESET (mini) ========= */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;line-height:1.6;-webkit-font-smoothing:antialiased}
-    img,svg,video,canvas{display:block;max-width:100%}
-    input,button,textarea,select{font:inherit}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img,
+    svg,
+    video,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
 
     /* ========= THEME ========= */
-    :root{
+    :root {
       --bg: #0b0c10;
       --surface: #121319;
       --text: #eaecef;
@@ -25,156 +50,849 @@
       --brand-ink: #064e3b;
       --card: #141823;
       --ring: #94a3b8;
-      --shadow: 0 10px 25px rgba(0,0,0,.25);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
       --radius: 16px;
       --maxw: 1120px;
     }
-    :root.light{
-      --bg:#f7f8fa; --surface:#ffffff; --text:#0f172a; --muted:#475569; --card:#ffffff; --ring:#94a3b8; --shadow:0 8px 24px rgba(2,6,23,.08);
+    :root.light {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --card: #ffffff;
+      --ring: #94a3b8;
+      --shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
     }
-    body{background:var(--bg);color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin-inline:auto;padding-inline:1.25rem}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:999px;border:1px solid color-mix(in oklab, var(--text) 18%, transparent);background:transparent;color:var(--text);box-shadow:none;cursor:pointer;transition:.2s ease;}
-    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-    .btn.primary{background:var(--brand);color:var(--brand-ink);border-color:transparent;font-weight:700}
-    .chip{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .6rem;border-radius:999px;background:color-mix(in oklab, var(--brand) 16%, transparent);color:var(--text);border:1px solid color-mix(in oklab, var(--brand) 40%, transparent);font-size:.8rem}
-    .muted{color:var(--muted)}
-    .card{background:var(--card);border:1px solid color-mix(in oklab, var(--text) 10%, transparent);border-radius:var(--radius);box-shadow:var(--shadow)}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+        "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      border: 1px solid
+        color-mix(in oklab, var(--text) 18%, transparent);
+      background: transparent;
+      color: var(--text);
+      box-shadow: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    .btn.primary {
+      background: var(--brand);
+      color: var(--brand-ink);
+      border-color: transparent;
+      font-weight: 700;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--brand) 16%, transparent);
+      color: var(--text);
+      border: 1px solid
+        color-mix(in oklab, var(--brand) 40%, transparent);
+      font-size: 0.8rem;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid
+        color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
 
     /* ========= HEADER / NAV ========= */
-    header{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg) 86%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
-    .brand .logo{width:28px;height:28px;border-radius:8px;background:radial-gradient(120% 120% at 0% 0%, var(--brand) 0%, transparent 70%), linear-gradient(135deg, color-mix(in oklab, var(--brand) 15%, transparent), color-mix(in oklab, var(--text) 8%, transparent)); border:1px solid color-mix(in oklab, var(--brand) 40%, transparent)}
-    nav ul{display:flex;gap:.8rem;list-style:none;margin:0;padding:0}
-    .nav a{padding:.45rem .8rem;border-radius:999px}
-    .nav a:focus-visible, .btn:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
-    .nav a:hover{background:color-mix(in oklab, var(--text) 10%, transparent)}
-    .theme-toggle{border-radius:999px;padding:.5rem;border:1px solid color-mix(in oklab, var(--text) 12%, transparent)}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in oklab, var(--bg) 86%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid
+        color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .brand .logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background:
+        radial-gradient(
+          120% 120% at 0% 0%,
+          var(--brand) 0%,
+          transparent 70%
+        ),
+        linear-gradient(
+          135deg,
+          color-mix(in oklab, var(--brand) 15%, transparent),
+          color-mix(in oklab, var(--text) 8%, transparent)
+        );
+      border: 1px solid
+        color-mix(in oklab, var(--brand) 40%, transparent);
+    }
+    nav ul {
+      display: flex;
+      gap: 0.8rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav a {
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+    }
+    .nav a:focus-visible,
+    .btn:focus-visible {
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+    }
+    .nav a:hover {
+      background: color-mix(
+        in oklab,
+        var(--text) 10%,
+        transparent
+      );
+    }
+    .theme-toggle {
+      border-radius: 999px;
+      padding: 0.5rem;
+      border: 1px solid
+        color-mix(in oklab, var(--text) 12%, transparent);
+    }
 
     /* ========= HERO ========= */
-    .hero{padding:5.5rem 0 3.5rem;background: radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--brand) 12%, transparent), transparent), radial-gradient(900px 500px at 90% -20%, color-mix(in oklab, var(--text) 6%, transparent), transparent)}
-    .hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
-    .title{font-size:clamp(2rem, 4vw, 3rem);line-height:1.15;margin:.25rem 0 .5rem;font-weight:900}
-    .subtitle{font-size:clamp(1rem, 1.6vw, 1.25rem);color:var(--muted);max-width:60ch}
-    .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem}
-    .hero-card{aspect-ratio:4/3;border-radius:var(--radius);display:grid;place-items:center}
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+      background:
+        radial-gradient(
+          1200px 600px at 10% -10%,
+          color-mix(in oklab, var(--brand) 12%, transparent),
+          transparent
+        ),
+        radial-gradient(
+          900px 500px at 90% -20%,
+          color-mix(in oklab, var(--text) 6%, transparent),
+          transparent
+        );
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin: 0.25rem 0 0.5rem;
+      font-weight: 900;
+    }
+    .subtitle {
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+    .hero-card {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+    }
 
     /* ========= SECTIONS ========= */
-    section{padding:3rem 0}
-    .section-title{font-size:1.6rem;margin:0 0 1.2rem;font-weight:800}
+    section {
+      padding: 3rem 0;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      margin: 0 0 1.2rem;
+      font-weight: 800;
+    }
 
     /* ========= PROJECTS ========= */
-    .projects-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .project{grid-column:span 4;display:flex;flex-direction:column;overflow:hidden}
-    .project .thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(180deg, color-mix(in oklab, var(--text) 12%, transparent), transparent), linear-gradient(90deg, color-mix(in oklab, var(--brand) 18%, transparent), transparent);}
-    .project .thumb svg{position:absolute;inset:0;margin:auto;opacity:.85}
-    .project .body{padding:1rem}
-    .project h3{margin:.1rem 0;font-size:1.05rem}
-    .project .meta{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 .6rem}
-    .project .actions{display:flex;gap:.5rem;margin-top:auto;padding:0 1rem 1rem}
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .project {
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .project .thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      background:
+        linear-gradient(
+          180deg,
+          color-mix(in oklab, var(--text) 12%, transparent),
+          transparent
+        ),
+        linear-gradient(
+          90deg,
+          color-mix(in oklab, var(--brand) 18%, transparent),
+          transparent
+        );
+    }
+    .project .thumb svg {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      opacity: 0.85;
+    }
+    .project .body {
+      padding: 1rem;
+    }
+    .project h3 {
+      margin: 0.1rem 0;
+      font-size: 1.05rem;
+    }
+    .project .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.4rem 0 0.6rem;
+    }
+    .project .actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding: 0 1rem 1rem;
+    }
 
     /* ========= EXPERIENCE ========= */
-    .timeline{display:grid;gap:1rem}
-    .item{display:grid;grid-template-columns:120px 1fr;gap:1rem;padding:1rem;border:1px solid color-mix(in oklab, var(--text) 10%, transparent);border-radius:var(--radius)}
-    .item time{font-variant-numeric:tabular-nums;color:var(--muted)}
-    .item h4{margin:.2rem 0}
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+    .item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid
+        color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius: var(--radius);
+    }
+    .item time {
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+    }
+    .item h4 {
+      margin: 0.2rem 0;
+    }
 
     /* ========= SKILLS ========= */
-    .skills{display:flex;flex-wrap:wrap;gap:.5rem}
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
 
     /* ========= CONTACT ========= */
-    form{display:grid;gap:.8rem;max-width:720px}
-    input, textarea{background:var(--surface);border:1px solid color-mix(in oklab, var(--text) 12%, transparent);color:var(--text);padding:.8rem .9rem;border-radius:12px}
-    textarea{min-height:140px;resize:vertical}
+    form {
+      display: grid;
+      gap: 0.8rem;
+      max-width: 720px;
+    }
+    input,
+    textarea {
+      background: var(--surface);
+      border: 1px solid
+        color-mix(in oklab, var(--text) 12%, transparent);
+      color: var(--text);
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
+    }
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
 
     /* ========= FOOTER ========= */
-    footer{padding:2rem 0;color:var(--muted);border-top:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
+    footer {
+      padding: 2rem 0;
+      color: var(--muted);
+      border-top: 1px solid
+        color-mix(in oklab, var(--text) 10%, transparent);
+    }
 
     /* ========= MODAL ========= */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:color-mix(in oklab, var(--bg) 70%, black 30% / 60%)}
-    .modal[open]{display:flex}
-    .modal-card{width:min(880px, 92vw)}
-    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1rem .5rem}
-    .modal-body{padding:0 1rem 1rem}
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: color-mix(
+        in oklab,
+        var(--bg) 70%,
+        black 30% / 60%
+      );
+    }
+    .modal[open] {
+      display: flex;
+    }
+    .modal-card {
+      width: min(880px, 92vw);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1rem 0.5rem;
+    }
+    .modal-body {
+      padding: 0 1rem 1rem;
+      max-height: 70vh;
+      /* 👈 scrollable window */
+      overflow-y: auto;
+    }
+
+    /* ========= REPORT STYLES INSIDE MODAL ========= */
+    .modal-body .report-section + .report-section {
+      margin-top: 1.5rem;
+    }
+    .report-section h4 {
+      margin: 0.4rem 0 0.25rem;
+      color: var(--brand);
+      font-size: 1.05rem;
+    }
+    .report-section h5 {
+      margin: 0.6rem 0 0.2rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .report-section p {
+      margin: 0.15rem 0 0.35rem;
+      font-size: 0.9rem;
+    }
+    .report-section ul {
+      margin: 0.2rem 0 0.4rem 1.1rem;
+      font-size: 0.9rem;
+    }
+    .report-img {
+      margin: 0.5rem 0 0.25rem;
+      border-radius: 12px;
+      border: 1px solid
+        color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .figure-caption {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.4rem 0 0.6rem;
+      font-size: 0.88rem;
+    }
+    .report-table th,
+    .report-table td {
+      border: 1px solid
+        color-mix(in oklab, var(--text) 18%, transparent);
+      padding: 0.35rem 0.5rem;
+      text-align: left;
+    }
+    .report-table th {
+      background: color-mix(
+        in oklab,
+        var(--brand) 12%,
+        transparent
+      );
+      font-weight: 600;
+    }
+        /* ========= EXTRA REPORT UI ELEMENTS ========= */
+    .report-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 0 1rem;
+    }
+    .report-toc button {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid
+        color-mix(in oklab, var(--brand) 35%, transparent);
+      background: color-mix(in oklab, var(--brand) 18%, transparent);
+      color: var(--brand-ink);
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .report-toc button:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+
+    .report-summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.6rem;
+      margin: 0 0 1.2rem;
+    }
+    .report-summary-card {
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      background: color-mix(in oklab, var(--card) 70%, transparent);
+      border: 1px solid
+        color-mix(in oklab, var(--text) 12%, transparent);
+      font-size: 0.85rem;
+    }
+    .report-summary-card h6 {
+      margin: 0 0 0.2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .report-summary-card p {
+      margin: 0;
+    }
+
+    .report-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 0.6rem 0;
+    }
+    .report-gallery figure {
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid
+        color-mix(in oklab, var(--text) 10%, transparent);
+      background: color-mix(in oklab, var(--card) 80%, transparent);
+    }
+    .report-gallery img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .report-gallery figcaption {
+      padding: 0.35rem 0.6rem 0.45rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+/* etc. (paste entire block here) */
 
     /* ========= RESPONSIVE ========= */
-    @media (max-width: 980px){
-      .hero-inner{grid-template-columns:1fr}
-      .project{grid-column:span 6}
-      .item{grid-template-columns:1fr}
+    @media (max-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .project {
+        grid-column: span 6;
+      }
+      .item {
+        grid-template-columns: 1fr;
+      }
     }
-    @media (max-width: 640px){
-      .projects-grid{grid-template-columns:repeat(6,1fr)}
-      .project{grid-column:span 6}
-      nav ul{display:none}
-      .mobile-nav{display:flex;gap:.6rem}
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .project {
+        grid-column: span 6;
+      }
+      nav ul {
+        display: none;
+      }
+      .mobile-nav {
+        display: flex;
+        gap: 0.6rem;
+      }
     }
   </style>
+
   <script>
     // ======= Dark/Light Theme =======
-    const saved = localStorage.getItem('theme');
-    const prefersLight = matchMedia('(prefers-color-scheme: light)').matches;
-    if(saved === 'light' || (!saved && prefersLight)) document.documentElement.classList.add('light');
+    const saved = localStorage.getItem("theme");
+    const prefersLight = matchMedia(
+      "(prefers-color-scheme: light)"
+    ).matches;
+    if (saved === "light" || (!saved && prefersLight))
+      document.documentElement.classList.add("light");
 
-    function toggleTheme(){
-      document.documentElement.classList.toggle('light');
-      localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    function toggleTheme() {
+      document.documentElement.classList.toggle("light");
+      localStorage.setItem(
+        "theme",
+        document.documentElement.classList.contains("light")
+          ? "light"
+          : "dark"
+      );
     }
 
     // ======= Smooth Scroll =======
-    function smoothTo(id){
+    function smoothTo(id) {
       const el = document.querySelector(id);
-      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
-    // ======= Project Data (edit me) =======
+    // ======= Project Data =======
     const PROJECTS = [
-  {
-    title: 'Truss Bridge Structural Analysis & Build',
-    summary: 'Design, analysis, and construction of a balsa wood truss bridge for maximum efficiency (strength-to-weight).',
-    tags: ['Engineering Statics', 'Structural Analysis', '3D CAD', 'Fabrication'],
-    links: { demo: '#', code: '#'},
-    details: 'Applied the **Method of Joints** and **Method of Sections** to determine internal forces in truss members under a concentrated load. Designed a **Pratt** or **Warren** truss geometry using 3D CAD to minimize member stress. Constructed the bridge from balsa wood and tested it to failure to calculate the final efficiency ratio.',
-    // 💡 FIX: Added imageURL to use the image in your assets folder
-    imageURL: 'assets/1.jpg' 
-  },
-  {
-    title: 'Stabilized Platform for High‑Altitude Balloon',
-    summary: 'MPU6050 + Arduino Nano controller to keep a payload level in flight.',
-    tags: ['Embedded', 'Control Systems', 'C++'],
-    links: { demo: '#', code: '#'},
-    details: 'Designed an active stabilization platform using IMU fusion (complementary filter), PID control, and micro‑servo actuation. Logged motion data and tuned gains to minimize overshoot under disturbance.'
-  },
-  {
-    title: 'Automatic Sun‑Tracking Blinds',
-    summary: 'Low‑power mechanism that tracks the sun to optimize indoor lighting.',
-    tags: ['Embedded', 'Mechanisms', '3D CAD', 'Sensor Fusion'],
-    links: { demo: '#', code: '#'},
-    details: 'Built a dual LDR sensor head to estimate incident angle and drive a micro‑servo via a simple differential amplifier. Modeled torque and gear ratios; included manual override and failsafe.'
-  },
-  {
-    title: 'Desktop Organizer with Lift Mechanism',
-    summary: 'Mechanical lift platform with switchable manual/automatic modes.',
-    tags: ['Mechanisms', 'Fabrication', 'CAD'],
-    links: { demo: '#', code: '#'},
-    details: 'Laser‑cut chassis with rack‑and‑pinion lift; microcontroller option for schedule‑based motion. Focus on strength‑to‑weight and safety interlocks.'
-  }
-];
+      {
+        title: "Truss Bridge Structural Analysis & Build",
+        summary:
+          "Design, analysis, and construction of a balsa wood truss bridge for maximum efficiency (strength-to-weight).",
+        tags: [
+          "Engineering Statics",
+          "Structural Analysis",
+          "3D CAD",
+          "Fabrication"
+        ],
+        links: { demo: "#", code: "#" },
+        details:
+          "Full report is shown below. Edit the text, images, and tables to match your own bridge.",
+        imageURL: "assets/1.jpg",
+
+        // 🔹 Rich report content for the modal:
+        reportHTML: `
+        <!-- ========== TABLE OF CONTENTS ========== -->
+<div class="report-toc">
+  <button type="button"
+    onclick="document.querySelector('.modal-body')
+      .scrollTo({ top: document.querySelector('#section-design').offsetTop - 8, behavior: 'smooth' });">
+    1) Design
+  </button>
+
+  <button type="button"
+    onclick="document.querySelector('.modal-body')
+      .scrollTo({ top: document.querySelector('#section-analysis').offsetTop - 8, behavior: 'smooth' });">
+    2) Analysis & Construction
+  </button>
+
+  <button type="button"
+    onclick="document.querySelector('.modal-body')
+      .scrollTo({ top: document.querySelector('#section-testing').offsetTop - 8, behavior: 'smooth' });">
+    4) Testing & Failure
+  </button>
+
+  <button type="button"
+    onclick="document.querySelector('.modal-body')
+      .scrollTo({ top: document.querySelector('#section-appendix').offsetTop - 8, behavior: 'smooth' });">
+    5) Appendices
+  </button>
+</div>
+<!-- ========== END TABLE OF CONTENTS ========== -->
+
+
+<!-- Now the report STARTS here -->
+<section class="report-section" id="section-design">
+  <h4>1) Bridge Design Description</h4>
+
+  <h5>A. Designs considered during brainstorming</h5>
+  <p>
+    Our initial brainstorming focused on several common truss topologies:
+    Pratt, Warren, and Howe. We compared them using three main criteria:
+    <strong>efficiency (strength-to-weight)</strong>,
+    <strong>constructability with balsa</strong>, and
+    <strong>ease of analysis</strong>.
+  </p>
+  <p>
+    The Pratt truss provided clear load paths and shorter compression
+    members, while the Warren truss offered a very efficient triangular
+    pattern but required more precise cutting. After sketching and
+    comparing options, we prioritized:
+  </p>
+  <ul>
+    <li>Keeping compression members short to reduce buckling risk.</li>
+    <li>Using repeating panels so joints and cuts are easy to standardize.</li>
+    <li>Meeting span, height, and mass constraints with margin.</li>
+  </ul>
+  <p>
+    The final concept combined a Pratt-like load path with some
+    Warren-style diagonals to balance simplicity and performance.
+  </p>
+  <img src="assets/bridge-sketches.jpg" alt="Hand sketches of candidate truss designs" class="report-img" />
+  <p class="figure-caption">
+    Figure 1. Early hand sketches of candidate Pratt and Warren-style truss layouts.
+  </p>
+
+  <h5>B. Detailed description of final design</h5>
+  <p>
+    The final bridge consists of two identical planar trusses connected
+    by cross-bracing. Each truss uses equally spaced verticals and
+    diagonals sized from 3.175&nbsp;mm × 3.175&nbsp;mm balsa members
+    (1/8 in × 1/8 in). The top and bottom chords are straight, and the
+    load is applied at the mid-span panel point. The design directly
+    satisfies the limits in the Design Specification Table and is
+    represented in the Bridge Diagram (Figure 2).
+  </p>
+
+  <h5>C. Design Specification Table</h5>
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>Design Spec</th>
+        <th>Structure Built</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Structure Type</td>
+        <td>Truss (two planar trusses with cross-bracing)</td>
+      </tr>
+      <tr>
+        <td>Span</td>
+        <td>24 cm</td>
+      </tr>
+      <tr>
+        <td>Max. Height</td>
+        <td>10 cm</td>
+      </tr>
+      <tr>
+        <td>Clear width between trusses</td>
+        <td>3.5 cm</td>
+      </tr>
+      <tr>
+        <td>Clear height between cross members</td>
+        <td>3.5 cm</td>
+      </tr>
+      <tr>
+        <td>Design Load</td>
+        <td>66 N (mid-span, downward)</td>
+      </tr>
+      <tr>
+        <td>Min. Factor of Safety</td>
+        <td>1.5</td>
+      </tr>
+      <tr>
+        <td>Max. Mass</td>
+        <td>&lt; 10 g</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>D. Bridge Diagram (max tension &amp; compression)</h5>
+  <p>
+    The to-scale diagram below shows each member with its internal
+    axial force at the design load of 66&nbsp;N. Members in
+    <strong>tension</strong> are labeled “T” and members in
+    <strong>compression</strong> are labeled “C”.
+  </p>
+  <img src="assets/bridge-diagram.png" alt="To-scale truss bridge diagram with member forces" class="report-img" />
+  <p class="figure-caption">
+    Figure 2. Truss bridge diagram at the 66&nbsp;N design load, showing member
+    forces (kN) and indicating which members are in tension (T) or compression (C).
+  </p>
+</section>
+
+<section class="report-section" id="section-analysis">
+  <h4>2) Analysis and Construction of Bridge</h4>
+
+
+  <h5>A. Description of Analysis Process</h5>
+  <p>
+    The analysis was performed using the <strong>Method of Joints</strong>
+    for all nodes, with the <strong>Method of Sections</strong> used to
+    quickly check critical members near mid-span. We assumed:
+  </p>
+  <ul>
+    <li>Pinned joints (no moments at the joints).</li>
+    <li>Loads applied only at joints.</li>
+    <li>Members carry only axial tension or compression.</li>
+    <li>Self-weight of members is small compared with the design load.</li>
+  </ul>
+  <p>
+    Reactions at the supports were found first using global equilibrium,
+    then each joint was solved using ΣF<sub>x</sub> = 0 and ΣF<sub>y</sub> = 0.
+    Final member forces were checked using a simple truss analysis
+    software tool, and hand calculations are included in the Appendices.
+    The resulting forces are summarized in the Member Force Table
+    (Table 2).
+  </p>
+
+  <h5>B. Member Force Table (with Factor of Safety)</h5>
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>Member ID</th>
+        <th>Location / Description</th>
+        <th>Force (N)</th>
+        <th>State (T / C)</th>
+        <th>Critical Strength (N)</th>
+        <th>Factor of Safety</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TopChord-1</td>
+        <td>Left top chord panel</td>
+        <td>XXX</td>
+        <td>C</td>
+        <td>YYY</td>
+        <td>FoS = YYY / XXX</td>
+      </tr>
+      <tr>
+        <td>BottomChord-3</td>
+        <td>Center bottom chord panel</td>
+        <td>XXX</td>
+        <td>T</td>
+        <td>YYY</td>
+        <td>FoS = YYY / XXX</td>
+      </tr>
+      <tr>
+        <td>Diag-2</td>
+        <td>Diagonal into mid-span joint</td>
+        <td>XXX</td>
+        <td>T</td>
+        <td>YYY</td>
+        <td>FoS = YYY / XXX</td>
+      </tr>
+      <!-- Add remaining members as needed -->
+    </tbody>
+  </table>
+  <p class="muted">
+    (Replace XXX and YYY with your actual calculated forces and strengths.)
+  </p>
+</section>
+
+<section class="report-section" id="section-testing">
+  <h4>4) Testing Results & Failure Analysis</h4>
+
+  <p>
+    The bridge was tested on the Instron machine by loading at the
+    mid-span joint until failure. The maximum load reached was
+    <strong>[F<sub>max</sub> N]</strong>, corresponding to an experimental
+    factor of safety of <strong>FoS<sub>exp</sub> = F<sub>max</sub> / 66</strong>.
+  </p>
+  <p>
+    Failure initiated in a compression member near mid-span, which
+    buckled outward. This was consistent with our prediction that these
+    members had the highest compression forces and slenderness ratios.
+    Small misalignment and glue imperfections likely reduced the actual
+    buckling strength compared with the ideal calculations.
+  </p>
+  <img src="assets/instron-plot.png" alt="Instron load vs displacement plot for bridge test" class="report-img" />
+  <p class="figure-caption">
+    Figure 3. Instron load–displacement curve for the truss bridge test.
+  </p>
+  <p>
+    If the bridge did not meet the required factor of safety, the main
+    contributors would be underestimation of compression buckling
+    effects and variability in balsa material properties.
+  </p>
+</section>
+
+<section class="report-section" id="section-appendix">
+  <h4>5) Appendices: Supporting Calculations</h4>
+
+  <p>
+    The appendices include hand calculations used to verify the software
+    analysis:
+  </p>
+  <ul>
+    <li>Free-body diagram of the entire bridge showing reaction forces.</li>
+    <li>Joint-by-joint solutions using Method of Joints.</li>
+    <li>Section cut through the center panel using Method of Sections.</li>
+    <li>
+      Sample buckling calculation for the most critical compression member.
+    </li>
+  </ul>
+  <p>
+    In a full report, these would appear as scanned pages or neatly typed
+    calculations, each labeled (e.g., “Appendix A: Joint Calculations”)
+    and referenced in the main text above.
+  </p>
+</section>
+        `
+      },
+
+      {
+        title: "Stabilized Platform for High-Altitude Balloon",
+        summary:
+          "MPU6050 + Arduino Nano controller to keep a payload level in flight.",
+        tags: ["Embedded", "Control Systems", "C++"],
+        links: { demo: "#", code: "#" },
+        details:
+          "Designed an active stabilization platform using IMU fusion (complementary filter), PID control, and micro-servo actuation. Logged motion data and tuned gains to minimize overshoot under disturbance."
+      },
+      {
+        title: "Automatic Sun-Tracking Blinds",
+        summary:
+          "Low-power mechanism that tracks the sun to optimize indoor lighting.",
+        tags: ["Embedded", "Mechanisms", "3D CAD", "Sensor Fusion"],
+        links: { demo: "#", code: "#" },
+        details:
+          "Built a dual LDR sensor head to estimate incident angle and drive a micro-servo via a simple differential amplifier. Modeled torque and gear ratios; included manual override and failsafe."
+      },
+      {
+        title: "Desktop Organizer with Lift Mechanism",
+        summary:
+          "Mechanical lift platform with switchable manual/automatic modes.",
+        tags: ["Mechanisms", "Fabrication", "CAD"],
+        links: { demo: "#", code: "#" },
+        details:
+          "Laser-cut chassis with rack-and-pinion lift; microcontroller option for schedule-based motion. Focus on strength-to-weight and safety interlocks."
+      }
+    ];
 
     // ======= Render Projects =======
-    function renderProjects(){
-      const grid = document.getElementById('projects-grid');
-      grid.innerHTML = '';
+    function renderProjects() {
+      const grid = document.getElementById("projects-grid");
+      grid.innerHTML = "";
       PROJECTS.forEach((p, i) => {
-        // 💡 FIX: This logic is now correct, checking for imageURL to render the image
-        let thumbContent = p.imageURL 
+        const thumbContent = p.imageURL
           ? `<img src="${p.imageURL}" alt="${p.title} image" style="width:100%;height:100%;object-fit:cover;"/>`
-          : placeholderSVG(); // Fallback to your existing SVG placeholder
+          : placeholderSVG();
 
-        const card = document.createElement('article');
-        card.className = 'project card';
+        const card = document.createElement("article");
+        card.className = "project card";
         card.innerHTML = `
           <div class="thumb">
             ${thumbContent}
@@ -182,24 +900,32 @@
           <div class="body">
             <h3>${p.title}</h3>
             <p class="muted">${p.summary}</p>
-            <div class="meta">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
+            <div class="meta">${p.tags
+              .map((t) => `<span class='chip'>${t}</span>`)
+              .join("")}</div>
           </div>
           <div class="actions">
             <a class="btn" href="${p.links.demo}" target="_blank" rel="noreferrer noopener">Live</a>
             <a class="btn" href="${p.links.code}" target="_blank" rel="noreferrer noopener">Code</a>
-            <button class="btn primary" data-idx="${i}" aria-haspopup="dialog">Details</button>
+            <button class="btn primary" data-idx="${i}" aria-haspopup="dialog">
+              ${i === 0 ? "View Full Report" : "Details"}
+            </button>
           </div>
         `;
         grid.appendChild(card);
       });
 
       // Attach open handlers
-      grid.querySelectorAll('button[aria-haspopup="dialog"]').forEach(btn => {
-        btn.addEventListener('click', (e) => openModal(PROJECTS[+e.currentTarget.dataset.idx]));
-      })
+      grid
+        .querySelectorAll("button[aria-haspopup='dialog']")
+        .forEach((btn) => {
+          btn.addEventListener("click", (e) =>
+            openModal(PROJECTS[+e.currentTarget.dataset.idx])
+          );
+        });
     }
 
-    function placeholderSVG(){
+    function placeholderSVG() {
       return `<svg viewBox='0 0 800 450' xmlns='http://www.w3.org/2000/svg'>
         <defs>
           <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
@@ -214,80 +940,147 @@
           <rect x='160' y='135' rx='10' width='320' height='18'/>
         </g>
         <g opacity='.25' stroke='currentColor'>
-          <path d='M40 370 L220 220 L360 330 L520 200 L760 380' fill='none' stroke-width='8' stroke-linecap='round'/>
+          <path d='M40 370 L220 220 L360 330 L520 200 L760 380'
+            fill='none' stroke-width='8' stroke-linecap='round'/>
         </g>
       </svg>`;
     }
 
     // ======= Modal =======
-    function openModal(project){
-      const dialog = document.getElementById('modal');
-      dialog.querySelector('h3').textContent = project.title;
-      dialog.querySelector('.modal-details').textContent = project.details;
-      dialog.querySelector('.modal-tags').innerHTML = project.tags.map(t=>`<span class='chip'>${t}</span>`).join('');
-      dialog.showModal ? dialog.showModal() : dialog.setAttribute('open','');
+    function openModal(project) {
+      const dialog = document.getElementById("modal");
+      dialog.querySelector("h3").textContent = project.title;
+
+      const tagsEl = dialog.querySelector(".modal-tags");
+      tagsEl.innerHTML = project.tags
+        .map((t) => `<span class='chip'>${t}</span>`)
+        .join("");
+
+      const detailsEl = dialog.querySelector(".modal-details");
+
+      // If there is a rich report, render that; otherwise show simple text
+      if (project.reportHTML) {
+        detailsEl.innerHTML = project.reportHTML;
+        detailsEl.classList.remove("muted");
+      } else {
+        detailsEl.textContent = project.details || "";
+        detailsEl.classList.add("muted");
+      }
+
+      if (dialog.showModal) {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute("open", "");
+      }
     }
-    function closeModal(){
-      const d = document.getElementById('modal');
-      d.close ? d.close() : d.removeAttribute('open');
+
+    function closeModal() {
+      const d = document.getElementById("modal");
+      if (d.close) {
+        d.close();
+      } else {
+        d.removeAttribute("open");
+      }
     }
 
     // ======= On load =======
-    addEventListener('DOMContentLoaded', () => {
+    addEventListener("DOMContentLoaded", () => {
       renderProjects();
-      // Close modal on backdrop click
-      const modal = document.getElementById('modal');
-      modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+      const modal = document.getElementById("modal");
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
     });
   </script>
+
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Julia Nazarko",
-    "jobTitle": "Engineer",
-    "url": "https://example.com",
-    "sameAs": ["https://github.com/your-username", "https://www.linkedin.com/in/your-username/"]
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Julia Nazarko",
+      "jobTitle": "Engineer",
+      "url": "https://example.com",
+      "sameAs": [
+        "https://github.com/your-username",
+        "https://www.linkedin.com/in/your-username/"
+      ]
+    }
   </script>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#home" onclick="smoothTo('#home')" aria-label="Home">
+      <a
+        class="brand"
+        href="#home"
+        onclick="smoothTo('#home')"
+        aria-label="Home"
+      >
         <span class="logo" aria-hidden="true"></span>
         <span>Julia&nbsp;Nazarko</span>
       </a>
       <nav>
         <ul aria-label="Primary">
-          <li><a href="#projects" onclick="smoothTo('#projects')">Projects</a></li>
-          <li><a href="#experience" onclick="smoothTo('#experience')">Experience</a></li>
-          <li><a href="#skills" onclick="smoothTo('#skills')">Skills</a></li>
-          <li><a href="#contact" onclick="smoothTo('#contact')">Contact</a></li>
+          <li>
+            <a href="#projects" onclick="smoothTo('#projects')">Projects</a>
+          </li>
+          <li>
+            <a href="#experience" onclick="smoothTo('#experience')">Experience</a>
+          </li>
+          <li>
+            <a href="#skills" onclick="smoothTo('#skills')">Skills</a>
+          </li>
+          <li>
+            <a href="#contact" onclick="smoothTo('#contact')">Contact</a>
+          </li>
         </ul>
       </nav>
       <div class="mobile-nav" aria-hidden="true" hidden></div>
-      <button class="theme-toggle" title="Toggle theme" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+      <button
+        class="theme-toggle"
+        title="Toggle theme"
+        onclick="toggleTheme()"
+        aria-label="Toggle theme"
+      >
+        🌓
+      </button>
     </div>
   </header>
 
   <main id="home" class="hero">
-  <div class="container hero-inner">
-    <div>
-      <p class="chip" aria-label="Role">Engineer • Builder • Problem‑Solver</p>
-      <h1 class="title">I design and build things that work in the real world.</h1>
-      <p class="subtitle">From embedded systems and control to mechanisms and data‑driven decisions, my work blends rigorous engineering with practical constraints—budget, reliability, and user experience.</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="#projects" onclick="smoothTo('#projects')">See Projects</a>
-        <a class="btn" href="mailto:youremail@example.com">Email Me</a>
-        <a class="btn" href="#" download>Download Résumé</a>
+    <div class="container hero-inner">
+      <div>
+        <p class="chip" aria-label="Role">
+          Engineer • Builder • Problem-Solver
+        </p>
+        <h1 class="title">
+          I design and build things that work in the real world.
+        </h1>
+        <p class="subtitle">
+          From embedded systems and control to mechanisms and data-driven
+          decisions, my work blends rigorous engineering with practical
+          constraints—budget, reliability, and user experience.
+        </p>
+        <div class="hero-cta">
+          <a
+            class="btn primary"
+            href="#projects"
+            onclick="smoothTo('#projects')"
+            >See Projects</a
+          >
+          <a class="btn" href="mailto:youremail@example.com">Email Me</a>
+          <a class="btn" href="#" download>Download Résumé</a>
+        </div>
+      </div>
+      <div class="hero-card card">
+        <img
+          src="assets/jj.jpeg"
+          alt="A relevant image of Julia Nazarko working on an engineering project"
+          style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius);"
+        />
       </div>
     </div>
-    <div class="hero-card card"> 
-      <img src="assets/jj.jpeg" alt="A relevant image of Julia Nazarko working on an engineering project" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius);">
-    </div>
-    </div>
-</main>
+  </main>
 
   <section id="projects" class="container">
     <h2 class="section-title">Projects</h2>
@@ -301,14 +1094,21 @@
         <time>2025</time>
         <div>
           <h4>Research Intern — Stabilized Platform (NEXO Program)</h4>
-          <p class="muted">Built an active stabilization system using MPU6050 and servo actuation; presented findings at an academic conference. Led data acquisition and control tuning.</p>
+          <p class="muted">
+            Built an active stabilization system using MPU6050 and servo
+            actuation; presented findings at an academic conference. Led data
+            acquisition and control tuning.
+          </p>
         </div>
       </div>
       <div class="item card">
         <time>2024–2025</time>
         <div>
           <h4>Media Team Manager — Youth Organization</h4>
-          <p class="muted">Coordinated content scheduling, ran engagement experiments, and automated posting workflows; mentored a multidisciplinary team.</p>
+          <p class="muted">
+            Coordinated content scheduling, ran engagement experiments, and
+            automated posting workflows; mentored a multidisciplinary team.
+          </p>
         </div>
       </div>
     </div>
@@ -320,8 +1120,8 @@
       <span class="chip">Arduino / C++</span>
       <span class="chip">Python</span>
       <span class="chip">Control (PID)</span>
-      <span class="chip">Mechanisms & CAD</span>
-      <span class="chip">Soldering & Prototyping</span>
+      <span class="chip">Mechanisms &amp; CAD</span>
+      <span class="chip">Soldering &amp; Prototyping</span>
       <span class="chip">Data Viz</span>
       <span class="chip">HTML/CSS/JS</span>
       <span class="chip">Git/GitHub</span>
@@ -330,20 +1130,35 @@
 
   <section id="contact" class="container">
     <h2 class="section-title">Contact</h2>
-    <form action="mailto:youremail@example.com" method="post" enctype="text/plain" aria-label="Contact form">
+    <form
+      action="mailto:youremail@example.com"
+      method="post"
+      enctype="text/plain"
+      aria-label="Contact form"
+    >
       <input type="text" name="name" placeholder="Your name" required />
       <input type="email" name="email" placeholder="Your email" required />
-      <textarea name="message" placeholder="Tell me about your project" required></textarea>
+      <textarea
+        name="message"
+        placeholder="Tell me about your project"
+        required
+      ></textarea>
       <div>
         <button class="btn primary" type="submit">Send Message</button>
       </div>
-      <p class="muted" style="margin:.4rem 0 0">No backend needed — this uses your email app. For a serverless form later, wire up Netlify Forms or Formspree.</p>
+      <p class="muted" style="margin:.4rem 0 0">
+        No backend needed — this uses your email app. For a serverless form
+        later, wire up Netlify Forms or Formspree.
+      </p>
     </form>
   </section>
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> Julia Nazarko. Built with accessible, semantic HTML, modern CSS, and vanilla JS.</p>
+      <p>
+        © <span id="year"></span> Julia Nazarko. Built with accessible, semantic
+        HTML, modern CSS, and vanilla JS.
+      </p>
     </div>
   </footer>
 
@@ -351,18 +1166,22 @@
     <div class="modal-card card" role="document">
       <div class="modal-header">
         <h3 id="modal-title">Project title</h3>
-        <button class="btn" onclick="closeModal()" aria-label="Close">Close ✕</button>
+        <button class="btn" onclick="closeModal()" aria-label="Close">
+          Close ✕
+        </button>
       </div>
       <div class="modal-body">
         <div class="meta modal-tags" style="margin-bottom:.6rem"></div>
-        <p class="modal-details muted"></p>
+        <!-- CHANGED from <p> to <div> so we can inject rich HTML -->
+        <div class="modal-details"></div>
       </div>
     </div>
   </dialog>
 
   <script>
     // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
 </body>
 </html>
