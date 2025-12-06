@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Julia Nazarko — Engineer Portfolio</title>
+  <title>Yuliia Nazarko — Engineer Portfolio</title>
   <meta name="description" content="Portfolio website showcasing engineering projects, experience, and skills." />
   <meta name="color-scheme" content="light dark" />
   <link
@@ -424,6 +424,13 @@
       border: 1px solid
         color-mix(in oklab, var(--text) 10%, transparent);
     }
+    /* Make only the testing photos smaller */
+#section-testing .report-img {
+  max-width: 55%;      /* 👈 controls how small they are */
+  display: block;
+  margin: 0.75rem auto; /* center them */
+}
+
     .figure-caption {
       font-size: 0.78rem;
       font-style: italic;
@@ -513,17 +520,114 @@
       background: color-mix(in oklab, var(--card) 80%, transparent);
     }
     .report-gallery img {
-      display: block;
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+  display: block;
+  width: 100%;
+  height: auto;           /* let image decide its height */
+  object-fit: contain;    /* show the whole sketch without cutting */
+}
+
     .report-gallery figcaption {
       padding: 0.35rem 0.6rem 0.45rem;
       font-size: 0.78rem;
       color: var(--muted);
       font-style: italic;
     }
+        /* ===== Truss bridge report layout ===== */
+    .bridge-report {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .bridge-report h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+
+    .bridge-report h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .bridge-report p,
+    .bridge-report li {
+      margin: 0.25rem 0;
+    }
+    /* === Bullet Box Styling === */
+.analysis-bullets-card {
+  margin-top: 0.9rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(148, 163, 184, 0.18); /* light gray box */
+}
+
+.analysis-bullets-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.analysis-bullets-card li {
+  margin-bottom: 0.45rem;
+}
+
+
+    .report-section {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin: 2rem 0;
+    }
+    .report-section.fullwidth {
+  grid-template-columns: 1fr;
+}
+
+
+    .report-section.reverse {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    }
+
+    .report-text {
+      font-size: 0.95rem;
+    }
+
+    .report-media img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    /* Fine-tune analysis images layout */
+#section-analysis .report-media {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;              /* space between blue image and table image */
+}
+
+/* Move Figure 5 lower to fill the empty space */
+#section-analysis .report-media .analysis-figure:nth-child(2) {
+  margin-top: 3.5rem; /* <-- increase to push it further down */
+}
+
+/* Push the blue image down a bit so it lines up better with the text */
+#section-analysis .report-media .analysis-figure:first-child {
+  margin-top: 1.8rem;       /* tweak this number (1.5–2.5rem) until it feels right */
+}
+
+/* Optional: tighten the bottom of the second figure a bit */
+#section-analysis .report-media .analysis-figure:last-child {
+  margin-bottom: 0;
+}
+
+
+    @media (max-width: 768px) {
+      .report-section,
+      .report-section.reverse {
+        grid-template-columns: 1fr;
+      }
+    }
+
 
 /* etc. (paste entire block here) */
 
@@ -598,7 +702,7 @@
         links: { demo: "#", code: "#" },
         details:
           "Full report is shown below. Edit the text, images, and tables to match your own bridge.",
-        imageURL: "assets/1.jpg",
+        imageURL: "assets/front.jpeg",
 
         // 🔹 Rich report content for the modal:
         reportHTML: `
@@ -632,183 +736,347 @@
 
 
 <!-- Now the report STARTS here -->
-<section class="report-section" id="section-design">
-  <h4>1) Bridge Design Description</h4>
+<section class="report-section" id="section-overview">
+  <h4>1) Project Description</h4>
+
+  <style>
+    /* Layout for the overview text + bullets */
+    #section-overview .overview-row {
+      grid-column: 1 / -1;          /* span both report columns */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-top: 0.75rem;
+    }
+
+    #section-overview .overview-left {
+      flex: 2 1 420px;              /* wider text column */
+      min-width: 0;
+    }
+
+    #section-overview .overview-right {
+      flex: 1 1 260px;              /* narrower bullet column */
+      min-width: 0;
+    }
+
+    #section-overview .overview-right ul {
+      padding-left: 1.2rem;
+      margin-top: 0.25rem;
+    }
+
+    #section-overview .overview-right li {
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    /* Table centered, not too wide */
+    #section-overview .overview-table-wrapper {
+      grid-column: 1 / -1;          /* full width under the row */
+      margin-top: 1.5rem;
+    }
+
+    #section-overview .overview-table-wrapper .report-table {
+      width: 100%;
+      max-width: 900px;             /* shrink a bit on large screens */
+      margin: 0 auto;               /* center the table */
+    }
+
+    #section-overview h5 {
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+
+  <!-- 2-column layout: text on left, bullets on right -->
+  <div class="overview-row">
+    <div class="overview-left">
+      <p>
+        Each team was tasked with designing, constructing, and documenting a truss
+        bridge that is both <strong>safe</strong> and <strong>lightweight</strong>.
+        A successful bridge must fail above the required factor of safety, weigh
+        less than <strong>10 g</strong>, and satisfy all geometric and material
+        constraints. Additional bonus credit is awarded for bridges with
+        exceptionally high strength-to-weight ratios and for designs that are
+        non-standard (i.e., not simple Pratt or Howe trusses).
+      </p>
+
+      <p>
+        This project provides hands-on experience in designing, analyzing,
+        building, and testing a lightweight truss bridge. Working in a two-person
+        team, we followed a complete
+        <strong>design–analysis–build–test–interpret</strong> cycle, from
+        concept sketch through final failure testing.
+      </p>
+    </div>
+
+    <div class="overview-right">
+      <p><strong>Project learning goals:</strong></p>
+      <ul>
+        <li>Designing collaboratively to meet strict specifications.</li>
+        <li>Observing how a slender truss behaves all the way to failure.</li>
+        <li>Measuring load, deflection, and failure mode during testing.</li>
+        <li>Applying structural design principles for members in tension and compression.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Full-width design specification table -->
+  <div class="overview-table-wrapper">
+    <h5>Design Specification Table</h5>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Design Spec</th>
+          <th>Structure Built</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Structure Type</td>
+          <td>Truss (two planar trusses with cross-bracing)</td>
+        </tr>
+        <tr>
+          <td>Span</td>
+          <td>24 cm</td>
+        </tr>
+        <tr>
+          <td>Max. Height</td>
+          <td>10 cm</td>
+        </tr>
+        <tr>
+          <td>Clear width between trusses</td>
+          <td>3.5 cm</td>
+        </tr>
+        <tr>
+          <td>Clear height between cross members</td>
+          <td>3.5 cm</td>
+        </tr>
+        <tr>
+          <td>Design Load</td>
+          <td>66 N (mid-span, downward)</td>
+        </tr>
+        <tr>
+          <td>Min. Factor of Safety</td>
+          <td>1.5</td>
+        </tr>
+        <tr>
+          <td>Max. Mass</td>
+          <td>&lt; 10 g</td>
+        </tr>
+        <tr>
+          <td>Material</td>
+          <td>Balsa wood (supplied)</td>
+        </tr>
+        <tr>
+          <td>Member cross-section</td>
+          <td>3.175 mm × 3.175 mm</td>
+        </tr>
+        <tr>
+          <td>Young’s Modulus</td>
+          <td>E = 2.55 GPa</td>
+        </tr>
+        <tr>
+          <td>Tensile strength (ultimate)</td>
+          <td>73 MPa</td>
+        </tr>
+        <tr>
+          <td>Compressive strength</td>
+          <td>6.9 MPa</td>
+        </tr>
+        <tr>
+          <td>Design approach</td>
+          <td>Non-standard truss (not Pratt / Howe)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+<section class="report-section fullwidth" id="section-design">
+
+  <h4>2) Bridge Design </h4>
 
   <h5>A. Designs considered during brainstorming</h5>
+
   <p>
-    Our initial brainstorming focused on several common truss topologies:
-    Pratt, Warren, and Howe. We compared them using three main criteria:
-    <strong>efficiency (strength-to-weight)</strong>,
-    <strong>constructability with balsa</strong>, and
-    <strong>ease of analysis</strong>.
-  </p>
-  <p>
-    The Pratt truss provided clear load paths and shorter compression
-    members, while the Warren truss offered a very efficient triangular
-    pattern but required more precise cutting. After sketching and
-    comparing options, we prioritized:
-  </p>
-  <ul>
-    <li>Keeping compression members short to reduce buckling risk.</li>
-    <li>Using repeating panels so joints and cuts are easy to standardize.</li>
-    <li>Meeting span, height, and mass constraints with margin.</li>
-  </ul>
-  <p>
-    The final concept combined a Pratt-like load path with some
-    Warren-style diagonals to balance simplicity and performance.
-  </p>
-  <img src="assets/bridge-sketches.jpg" alt="Hand sketches of candidate truss designs" class="report-img" />
-  <p class="figure-caption">
-    Figure 1. Early hand sketches of candidate Pratt and Warren-style truss layouts.
+    At the beginning of the project, we compared several truss geometries:
+    <strong>Warren</strong>, <strong>Camelback</strong>, and <strong>Pratt</strong>.
+    All three designs rely on a <strong>triangular structural system</strong>,
+    which is considered the most stable and efficient load-bearing geometry because
+    triangles cannot deform without changing member length. This inherent rigidity
+    makes triangular trusses ideal for lightweight yet strong structures.
   </p>
 
-  <h5>B. Detailed description of final design</h5>
   <p>
-    The final bridge consists of two identical planar trusses connected
-    by cross-bracing. Each truss uses equally spaced verticals and
-    diagonals sized from 3.175&nbsp;mm × 3.175&nbsp;mm balsa members
-    (1/8 in × 1/8 in). The top and bottom chords are straight, and the
-    load is applied at the mid-span panel point. The design directly
-    satisfies the limits in the Design Specification Table and is
-    represented in the Bridge Diagram (Figure 2).
+    Besides structural efficiency, our team had a clear performance goal:
+    <strong>maximize strength while minimizing weight</strong>. The project rubric
+    awarded additional points for lightness, so we specifically wanted a design
+    that used fewer members, shorter compression elements, and simple joints that
+    reduced glue mass. These constraints pushed us toward a hybrid concept that
+    combined the clean load paths of the Pratt truss with the material efficiency
+    of the Warren pattern.
   </p>
 
-  <h5>C. Design Specification Table</h5>
-  <table class="report-table">
-    <thead>
-      <tr>
-        <th>Design Spec</th>
-        <th>Structure Built</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Structure Type</td>
-        <td>Truss (two planar trusses with cross-bracing)</td>
-      </tr>
-      <tr>
-        <td>Span</td>
-        <td>24 cm</td>
-      </tr>
-      <tr>
-        <td>Max. Height</td>
-        <td>10 cm</td>
-      </tr>
-      <tr>
-        <td>Clear width between trusses</td>
-        <td>3.5 cm</td>
-      </tr>
-      <tr>
-        <td>Clear height between cross members</td>
-        <td>3.5 cm</td>
-      </tr>
-      <tr>
-        <td>Design Load</td>
-        <td>66 N (mid-span, downward)</td>
-      </tr>
-      <tr>
-        <td>Min. Factor of Safety</td>
-        <td>1.5</td>
-      </tr>
-      <tr>
-        <td>Max. Mass</td>
-        <td>&lt; 10 g</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h5>D. Bridge Diagram (max tension &amp; compression)</h5>
   <p>
-    The to-scale diagram below shows each member with its internal
-    axial force at the design load of 66&nbsp;N. Members in
-    <strong>tension</strong> are labeled “T” and members in
-    <strong>compression</strong> are labeled “C”.
+    Below are the initial sketches and references we used while exploring each
+    configuration:
   </p>
-  <img src="assets/bridge-diagram.png" alt="To-scale truss bridge diagram with member forces" class="report-img" />
-  <p class="figure-caption">
-    Figure 2. Truss bridge diagram at the 66&nbsp;N design load, showing member
-    forces (kN) and indicating which members are in tension (T) or compression (C).
+
+  <!-- IMAGE GALLERY INCLUDING camel.png -->
+  <div class="report-gallery">
+    <figure>
+      <img src="assets/ideas.png" alt="Pratt and Warren comparison sketches" />
+      <figcaption>Figure 1. Concept sketches comparing Pratt and Warren layouts.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/camel.png" alt="Camelback truss inspiration" />
+      <figcaption>Figure 2. Camelback truss reference used in early brainstorming.</figcaption>
+    </figure>
+
+<figure>
+      <img src="assets/waddell.png" alt="Camelback truss inspiration" />
+      <figcaption>Figure 3. Waddell truss considered </figcaption>
+    </figure>
+  
+
+  <p class="muted" style="margin-top:.3rem;">
+    We ultimately selected a Pratt-inspired configuration with strategic
+    Warren-style diagonals to balance predictability, stability, and
+    lightweight construction. Just for fun we decided to try another structure - Waddell. 
+    Which will be tested and reported in addition to the main project.
   </p>
 </section>
 
+ 
 <section class="report-section" id="section-analysis">
-  <h4>2) Analysis and Construction of Bridge</h4>
+  <div class="report-text">
+    <h4>3) Analysis and Construction of Bridge</h4>
 
+    <h5>A. Description of Analysis Process</h5>
+    <p>
+      To analyze the internal behavior of our balsa-wood bridge, we created a
+      two-dimensional model in the <strong>Truss Simulator</strong> provided by
+      Johns Hopkins University <em>Engineering Innovation</em>. The geometry,
+      support conditions, and loading configuration were matched to our physical
+      structure to accurately estimate axial forces in each member.
+    </p>
+    <p>
+      Using the Method of Joints, the simulator computed equilibrium at each
+      joint (ΣF<sub>x</sub> = 0, ΣF<sub>y</sub> = 0), producing tension and
+      compression forces throughout the truss. These forces were compared to the
+      material properties of our balsa wood to estimate which members would
+      reach failure first.
+    </p>
+    <p>
+      This analysis helped predict whether the bridge would fail by
+      <strong>compression buckling</strong> in the top chords or
+      <strong>tension rupture</strong> in diagonals and bottom chords under the
+      expected <strong>66 N load.</strong>
+    </p>
 
-  <h5>A. Description of Analysis Process</h5>
-  <p>
-    The analysis was performed using the <strong>Method of Joints</strong>
-    for all nodes, with the <strong>Method of Sections</strong> used to
-    quickly check critical members near mid-span. We assumed:
-  </p>
-  <ul>
-    <li>Pinned joints (no moments at the joints).</li>
-    <li>Loads applied only at joints.</li>
-    <li>Members carry only axial tension or compression.</li>
-    <li>Self-weight of members is small compared with the design load.</li>
-  </ul>
-  <p>
-    Reactions at the supports were found first using global equilibrium,
-    then each joint was solved using ΣF<sub>x</sub> = 0 and ΣF<sub>y</sub> = 0.
-    Final member forces were checked using a simple truss analysis
-    software tool, and hand calculations are included in the Appendices.
-    The resulting forces are summarized in the Member Force Table
-    (Table 2).
-  </p>
+    <!-- BULLETS: now directly under the big text -->
+    <div class="analysis-bullets-card">
+      <ul>
+        <li>
+          <strong>Applied test load:</strong> 66&nbsp;N applied at mid-span on
+          the roadbed.
+        </li>
+        <li>
+          <strong>Critical compression members (top chords):</strong><br />
+          • Members 0–5 and 1–7 carry about
+          <strong>−43.46&nbsp;N</strong> (maximum compression).<br />
+          • These are the most likely locations for
+          <strong>buckling</strong>.
+        </li>
+        <li>
+          <strong>Critical tension members (bottom chords &amp; diagonals):</strong
+          ><br />
+          • Bottom chord segments (0–2, 2–3, 3–4, 4–1) carry about
+          <strong>28.3&nbsp;N</strong> in tension.<br />
+          • Vertical members at supports carry about
+          <strong>33&nbsp;N</strong> (tension).
+        </li>
+        <li>
+          <strong>Material model used in analysis:</strong><br />
+          • Balsa cross-section: 3.175&nbsp;mm × 3.175&nbsp;mm.<br />
+          • Young’s modulus: 2.55&nbsp;GPa.<br />
+          • Tensile strength: 73&nbsp;MPa; compressive strength: 6.9&nbsp;MPa.
+        </li>
+        <li>
+          <strong>Safety expectations:</strong><br />
+          • Design target: factor of safety ≥ 1.5 for all members under
+          66&nbsp;N.<br />
+          • We expect first failure in a
+          <strong>top-chord compression member</strong> once the test load
+          exceeds the design value.
+        </li>
+      </ul>
+    </div>
+  </div>
 
-  <h5>B. Member Force Table (with Factor of Safety)</h5>
-  <table class="report-table">
-    <thead>
-      <tr>
-        <th>Member ID</th>
-        <th>Location / Description</th>
-        <th>Force (N)</th>
-        <th>State (T / C)</th>
-        <th>Critical Strength (N)</th>
-        <th>Factor of Safety</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>TopChord-1</td>
-        <td>Left top chord panel</td>
-        <td>XXX</td>
-        <td>C</td>
-        <td>YYY</td>
-        <td>FoS = YYY / XXX</td>
-      </tr>
-      <tr>
-        <td>BottomChord-3</td>
-        <td>Center bottom chord panel</td>
-        <td>XXX</td>
-        <td>T</td>
-        <td>YYY</td>
-        <td>FoS = YYY / XXX</td>
-      </tr>
-      <tr>
-        <td>Diag-2</td>
-        <td>Diagonal into mid-span joint</td>
-        <td>XXX</td>
-        <td>T</td>
-        <td>YYY</td>
-        <td>FoS = YYY / XXX</td>
-      </tr>
-      <!-- Add remaining members as needed -->
-    </tbody>
-  </table>
-  <p class="muted">
-    (Replace XXX and YYY with your actual calculated forces and strengths.)
-  </p>
+  <!-- RIGHT COLUMN: images only -->
+  <div class="report-media">
+    <figure class="analysis-figure">
+      <img
+        src="assets/simulation.png"
+        alt="Simulated Bridge Structure"
+        class="report-img"
+      />
+      <figcaption class="figure-caption">
+        Figure 4. Simulated Bridge Structure.
+      </figcaption>
+    </figure>
+
+    <figure class="analysis-figure">
+      <img
+        src="assets/dataTable.png"
+        alt="Member Forces from JHU Simulator"
+        class="report-img"
+      />
+      <figcaption class="figure-caption">
+        Figure 5. Member force output from the Truss Simulator.
+      </figcaption>
+    </figure>
+  </div>
 </section>
+
+
+
+
 
 <section class="report-section" id="section-testing">
   <h4>4) Testing Results & Failure Analysis</h4>
 
-  <p>
-    The bridge was tested on the Instron machine by loading at the
+  <div class="report-media">
+    <figure>
+      <img src="assets/startTest.jpeg" class="report-img" />
+      <figcaption class="figure-caption">Figure 6. Start of test.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/test2.jpeg" class="report-img" />
+      <figcaption class="figure-caption">Figure 7. Mid-test displacement.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/test3.jpeg" class="report-img" />
+      <figcaption class="figure-caption">Figure 8. Final test load.</figcaption>
+    </figure>
+  </div>
+</div>
+
+ 
+ <!-- 2-column layout: text on left, bullets on right -->
+  <div class="overview-row">
+    <div class="overview-right">
+      <p>
+    The bridge was tested on the Instron 3369 Testing machine(5 mm per minute) by loading at the
     mid-span joint until failure. The maximum load reached was
-    <strong>[F<sub>max</sub> N]</strong>, corresponding to an experimental
+    <strong> 144 N </strong>, corresponding to an experimental
     factor of safety of <strong>FoS<sub>exp</sub> = F<sub>max</sub> / 66</strong>.
   </p>
   <p>
@@ -818,14 +1086,10 @@
     Small misalignment and glue imperfections likely reduced the actual
     buckling strength compared with the ideal calculations.
   </p>
-  <img src="assets/instron-plot.png" alt="Instron load vs displacement plot for bridge test" class="report-img" />
-  <p class="figure-caption">
-    Figure 3. Instron load–displacement curve for the truss bridge test.
-  </p>
+      </div>
+  
   <p>
-    If the bridge did not meet the required factor of safety, the main
-    contributors would be underestimation of compression buckling
-    effects and variability in balsa material properties.
+    
   </p>
 </section>
 
